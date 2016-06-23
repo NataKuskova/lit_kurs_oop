@@ -18,10 +18,11 @@ class Furniture(WeightMixin, object):
     x = None
     y = None
 
-    def __init__(self, material, width, height):
-        self.material = material
-        self.width = width
-        self.height = height
+    # def __init__(self, material, width, height):
+    def __init__(self, **kwargs):
+        self.material = kwargs['material']
+        self.width = kwargs['width']
+        self.height = kwargs['height']
 
 
 class Appliance(Furniture, object):
@@ -63,12 +64,13 @@ class Room(VolumeMixin, object):
     y = None
     win_door = []
 
-    def __init__(self, furniture, length, width, height, win_door):
-        self.furniture = furniture
-        self.length = length
-        self.width = width
-        self.height = height
-        self.win_door = win_door
+    # def __init__(self, furniture, length, width, height, win_door):
+    def __init__(self, **kwargs):
+        self.furniture = kwargs['furniture']
+        self.length = kwargs['length']
+        self.width = kwargs['width']
+        self.height = kwargs['height']
+        self.win_door = kwargs['win_door']
 
     def volume(self):
         return self.length * self.width * self.height
@@ -92,8 +94,8 @@ class Hall(Room):
 class House(WeightMixin, VolumeMixin, object):
     rooms = None
 
-    def __init__(self, rooms):
-        self.rooms = rooms
+    def __init__(self, **kwargs):
+        self.rooms = kwargs['rooms']
 
     def volume(self):
         return sum([room.volume for room in self.rooms])
