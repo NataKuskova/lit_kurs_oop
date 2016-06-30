@@ -1,3 +1,8 @@
+import json
+from abc import ABCMeta, abstractmethod
+# Natasha Kuskova
+
+
 class Properties:
     length = None
     width = None
@@ -123,11 +128,11 @@ class Room(Properties):
         return sum_
 
     def energy_consumption_month(self):
-        energy = 0
+        energy_ = 0
         for furniture in self.furniture:
             if isinstance(furniture, Appliance):
-                energy += furniture.energy_consumption_one()
-        return energy
+                energy_ += furniture.energy_consumption_one()
+        return energy_
 
 
 class Kitchen(Room):
@@ -167,6 +172,51 @@ class House(Properties):
         return sum([room.energy_consumption_month() for room in self.rooms])
 
 
+class Encoder:
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
+    def load(self, data):
+        pass
+
+    @abstractmethod
+    def dump(self, obj):
+        pass
+
+
+class JSONEncoder(Encoder):
+
+    def load(self, data):
+        pass
+
+    def dump(self, obj):
+
+        dict_house = self.add_in_dict(obj)
+        with open('house.json', 'w', encoding='utf-8') as f:
+            json.dump(dict_house, f, indent=4)
+            f.close()
+
+    def add_in_dict(self, obj):
+        dict_house = []
+
+        for property_ in obj.__dict__:
+            if isinstance(obj.__dict__[property_], list):
+                for property_in_list in obj.__dict__[property_]:
+                    dict_house.append({property_: self.add_in_dict(property_in_list)})
+            else:
+                dict_house.append({property_: obj.__dict__[property_]})
+        return {obj.__class__.__name__: dict_house}
+
+
+class YAMLEncoder(Encoder):
+
+    def load(self, data):
+        pass
+
+    def dump(self, obj):
+        pass
+
+
 if __name__ == "__main__":
     house = House(
         rooms=[
@@ -180,8 +230,8 @@ if __name__ == "__main__":
                         height=1.5,
                         weight=70,
                         coordinate={
-                            'left_bottom': (0, 1),
-                            'right_top': (0.6, 1.5)
+                            'left_bottom': [0, 1],
+                            'right_top': [0.6, 1.5]
                         }
                     ),
                     Oven(
@@ -192,8 +242,8 @@ if __name__ == "__main__":
                         height=0.5,
                         weight=33,
                         coordinate={
-                            'left_bottom': (2, 0),
-                            'right_top': (2.5, 0.5)
+                            'left_bottom': [2, 0],
+                            'right_top': [2.5, 0.5]
                         }
                     )
                 ],
@@ -209,8 +259,8 @@ if __name__ == "__main__":
                         weight=50,
                         material='wood',
                         coordinate={
-                            'left_bottom': (4, 1),
-                            'right_top': (4, 2)
+                            'left_bottom': [4, 1],
+                            'right_top': [4, 2]
                         }
                     ),
                     WinDoor(
@@ -221,14 +271,14 @@ if __name__ == "__main__":
                         weight=45,
                         material='plastic',
                         coordinate={
-                            'left_bottom': (0, 1),
-                            'right_top': (0, 2.5)
+                            'left_bottom': [0, 1],
+                            'right_top': [0, 2.5]
                         }
                     )
                 ],
                 coordinate={
-                    'left_bottom': (0, 0),
-                    'right_top': (4, 3)
+                    'left_bottom': [0, 0],
+                    'right_top': [4, 3]
                 }
             ),
             Corridor(
@@ -245,14 +295,14 @@ if __name__ == "__main__":
                         weight=50,
                         material='wood',
                         coordinate={
-                            'left_bottom': (4.5, 0),
-                            'right_top': (5.5, 0)
+                            'left_bottom': [4.5, 0],
+                            'right_top': [5.5, 0]
                         }
                     )
                 ],
                 coordinate={
-                    'left_bottom': (4, 0),
-                    'right_top': (6, 7)
+                    'left_bottom': [4, 0],
+                    'right_top': [6, 7]
                 }
             )
         ],
@@ -260,8 +310,8 @@ if __name__ == "__main__":
         width=7,
         height=3,
         coordinate={
-            'left_bottom': (0, 0),
-            'right_top': (10, 7)
+            'left_bottom': [0, 0],
+            'right_top': [10, 7]
         }
     )
     weight = house.weight_house()
@@ -270,3 +320,6 @@ if __name__ == "__main__":
     print("The volume of house = " + str(volume) + " m^3")
     energy = house.energy_consumption()
     print("Energy consumption per month = " + str(energy) + " kW/h")
+
+    je = JSONEncoder()
+    je.dump(house)

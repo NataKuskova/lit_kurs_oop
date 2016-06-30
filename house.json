@@ -1,0 +1,262 @@
+{
+    "House": [
+        {
+            "length": 10
+        },
+        {
+            "coordinate": {
+                "right_top": [
+                    10,
+                    7
+                ],
+                "left_bottom": [
+                    0,
+                    0
+                ]
+            }
+        },
+        {
+            "width": 7
+        },
+        {
+            "height": 3
+        },
+        {
+            "rooms": {
+                "Kitchen": [
+                    {
+                        "length": 4
+                    },
+                    {
+                        "coordinate": {
+                            "right_top": [
+                                4,
+                                3
+                            ],
+                            "left_bottom": [
+                                0,
+                                0
+                            ]
+                        }
+                    },
+                    {
+                        "width": 3
+                    },
+                    {
+                        "height": 3
+                    },
+                    {
+                        "win_door": {
+                            "WinDoor": [
+                                {
+                                    "kind": "door"
+                                },
+                                {
+                                    "length": 1
+                                },
+                                {
+                                    "coordinate": {
+                                        "right_top": [
+                                            4,
+                                            2
+                                        ],
+                                        "left_bottom": [
+                                            4,
+                                            1
+                                        ]
+                                    }
+                                },
+                                {
+                                    "width": 0.1
+                                },
+                                {
+                                    "height": 2
+                                },
+                                {
+                                    "weight": 50
+                                },
+                                {
+                                    "material": "wood"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "win_door": {
+                            "WinDoor": [
+                                {
+                                    "kind": "window"
+                                },
+                                {
+                                    "length": 1.5
+                                },
+                                {
+                                    "coordinate": {
+                                        "right_top": [
+                                            0,
+                                            2.5
+                                        ],
+                                        "left_bottom": [
+                                            0,
+                                            1
+                                        ]
+                                    }
+                                },
+                                {
+                                    "width": 0.2
+                                },
+                                {
+                                    "height": 1.5
+                                },
+                                {
+                                    "weight": 45
+                                },
+                                {
+                                    "material": "plastic"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "furniture": {
+                            "Refrigerator": [
+                                {
+                                    "length": 0.6
+                                },
+                                {
+                                    "opening_hours": 8
+                                },
+                                {
+                                    "width": 0.5
+                                },
+                                {
+                                    "coordinate": {
+                                        "right_top": [
+                                            0.6,
+                                            1.5
+                                        ],
+                                        "left_bottom": [
+                                            0,
+                                            1
+                                        ]
+                                    }
+                                },
+                                {
+                                    "height": 1.5
+                                },
+                                {
+                                    "weight": 70
+                                },
+                                {
+                                    "energy_consumption": 250
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "furniture": {
+                            "Oven": [
+                                {
+                                    "length": 0.5
+                                },
+                                {
+                                    "opening_hours": 4
+                                },
+                                {
+                                    "width": 0.5
+                                },
+                                {
+                                    "coordinate": {
+                                        "right_top": [
+                                            2.5,
+                                            0.5
+                                        ],
+                                        "left_bottom": [
+                                            2,
+                                            0
+                                        ]
+                                    }
+                                },
+                                {
+                                    "height": 0.5
+                                },
+                                {
+                                    "weight": 33
+                                },
+                                {
+                                    "energy_consumption": 3000
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "rooms": {
+                "Corridor": [
+                    {
+                        "length": 7
+                    },
+                    {
+                        "coordinate": {
+                            "right_top": [
+                                6,
+                                7
+                            ],
+                            "left_bottom": [
+                                4,
+                                0
+                            ]
+                        }
+                    },
+                    {
+                        "width": 2
+                    },
+                    {
+                        "height": 3
+                    },
+                    {
+                        "win_door": {
+                            "WinDoor": [
+                                {
+                                    "kind": "door"
+                                },
+                                {
+                                    "length": 1
+                                },
+                                {
+                                    "coordinate": {
+                                        "right_top": [
+                                            5.5,
+                                            0
+                                        ],
+                                        "left_bottom": [
+                                            4.5,
+                                            0
+                                        ]
+                                    }
+                                },
+                                {
+                                    "width": 0.1
+                                },
+                                {
+                                    "height": 2
+                                },
+                                {
+                                    "weight": 50
+                                },
+                                {
+                                    "material": "wood"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "furniture": ""
+                    }
+                ]
+            }
+        }
+    ]
+}
